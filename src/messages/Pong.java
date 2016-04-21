@@ -10,6 +10,8 @@ public class Pong {
 	public byte[] total_size; // 4 bytes
 	// TOTAL==36bytes
 
+	public static final byte PAYLOAD_TYPE = (byte) 0x01;
+
 	public Pong(Descriptor pongDesc, byte[] node_port, byte[] node_ip, byte[] file_count, byte[] total_size) {
 		super();
 		this.pongDesc = pongDesc;

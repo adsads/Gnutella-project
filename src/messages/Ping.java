@@ -7,9 +7,12 @@ public class Ping {
 	public byte[] sender_node_ip; // 4 bytes
 	// total == 28 bytes
 
+	public static final byte PAYLOAD_TYPE = (byte) 0;
+	
 	public Ping(Descriptor pingDesc, byte[] sender_node_port, byte[] sender_node_ip) {
 		super();
 		this.pingDesc = pingDesc;
+		this.pingDesc.setPayloadType(PAYLOAD_TYPE);
 		this.sender_node_port = sender_node_port;
 		this.sender_node_ip = sender_node_ip;
 	}

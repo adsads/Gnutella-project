@@ -11,6 +11,14 @@ public class Descriptor {
 
 	public static long nodeId = 0;
 
+	/**
+	 * 
+	 * @param ID
+	 * @param payloadType
+	 * @param TTL
+	 * @param hops
+	 * @param payloadLength
+	 */
 	public Descriptor(byte[] ID, byte payloadType, byte TTL, byte hops, byte[] payloadLength) {
 		super();
 
@@ -21,6 +29,16 @@ public class Descriptor {
 		this.payloadLength = payloadLength;
 	}
 
+	/**
+	 * 
+	 * @param ID
+	 * @param ip
+	 * @param port
+	 * @param payloadType
+	 * @param TTL
+	 * @param hops
+	 * @param payloadLength
+	 */
 	public Descriptor(byte[] ID, byte[] ip, short port, byte payloadType, byte TTL, byte hops, byte[] payloadLength) {
 		super();
 
@@ -36,6 +54,19 @@ public class Descriptor {
 		this.TTL = TTL;
 		this.hops = hops;
 		this.payloadLength = payloadLength;
+	}
+
+	public Descriptor(byte[] ID, byte[] ip, byte[] port) {
+		super();
+
+		if (null == ID) {
+			ID = new byte[16];
+			System.arraycopy(ip, 0, ID, 0, 4);
+			System.arraycopy(port, 0, ID, 6, 2);
+			System.arraycopy(Conversion.longToBytes(nodeId++), 0, ID, 8, 8);
+		}
+
+		this.ID = ID;
 	}
 
 	public byte[] message() {
